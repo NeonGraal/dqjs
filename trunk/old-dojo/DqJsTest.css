@@ -1,0 +1,21 @@
+.hiding { font-style: italic; }
+
+.button { width: 75px; }
+
+.hidden { height: 0px; visibility: hidden; }
+.shown { height: auto; visibility: inherit; }
+
+.tag { text-align: left; }
+
+.epFirst, .epRest, .size,
+.cost, .weight, .lostAG, .stealthMod, .prot,
+.def, .lostMD,
+.reqPS, .reqMD, .baseChance, .damage, .range,
+.maxRank, .num	 { text-align: right; }
+
+.abbr, .hands, .class, .usage { text-align: center}
+
+DL, UL { margin: 0; }
+CAPTION { font-size: large; font-weight: bold; }
+
+TD, TH { padding: 1px 3px 1px 3px; }
