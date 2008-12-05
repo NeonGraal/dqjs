@@ -1,0 +1,110 @@
+<html><head>
+  <title>DQ JS Rules test page</title>
+
+  <link rel="Stylesheet" type="text/css" href="DqJsTest.css" />
+
+  <script language="Javascript" src="prototype.js"></script>
+  <script language="Javascript" src="proto-html.js"></script>
+
+  <script language="Javascript" src="DqJsFuncs.js"></script>
+  <script language="Javascript" src="DqJsClasses.js"></script>
+  <script language="Javascript" src="DqJsFull.js"></script>
+  <!-- script language="Javascript" src="DqJsCharGen.js"></script>
+  <script language="Javascript" src="DqJsRules.js"></script -->
+
+  <script language="Javascript" src="CharGen.js"></script>
+  <script language="Javascript" src="Skills.js"></script>
+  <script language="Javascript" src="MajorSkills.js"></script>
+  <script language="Javascript" src="Magic.js"></script>
+  <script language="Javascript" src="College/NonCollege.js"></script>
+  <script language="Javascript" src="College/PerCollege.js"></script>
+  <script language="Javascript" src="College/Air.js"></script>
+
+<script>
+var tabs = $w('HTML Elem JSON Code');
+
+function showIt(it) {
+		tabs.each(function(t) {
+			$('the' + t).style.display = t == it ? "block" : "none";
+			$('tab' + t).style.backgroundColor = t == it ? "lightyellow" : "white";
+		});
+}
+
+function showDQHTML(o) {
+	$("dqHTML").innerHTML = o ? Object.toHTML(o) : '';
+}
+
+function showDQElem(o) {
+	if (o) {
+		if (o.toElem)
+			o.toElem($("dqElem"));
+		else
+			$("dqElem").innerHTML = Object.toHTML(o);
+	}
+	else
+		$("dqElem").innerHTML = '';
+}
+
+function showDQJSON(o) {
+	$("dqJSON").innerHTML = o ? Object.toJSON(o) : '';
+}
+
+function showDQCode(o) {
+	$("dqCode").innerHTML = o ? o.toCode ? '<pre>' + o.toCode() + '</pre>' : Object.toJSON(o) : '';
+}
+
+function loadTags(sect, hash, hn) {
+	var e;
+	var p = $('tag' + sect);
+	for (var l in hash) {
+		e = new Element('div', {
+				onClick: "javascript:showDQ" + sect + "(" + hn + "." + l + ")"
+			});
+		e.update(l);
+		p.insert(e);
+	}
+	p.insert(new Element('hr'));
+	e = new Element('div', {
+			onClick: "javascript:showDQ" + sect + "()"
+		});
+	e.update('clear');
+	p.insert(e);
+}
+
+function loaded() {
+	var e, p;
+	p = $('dqTabs');
+	tabs.each(function(t) {
+		e = new Element('td', { id: "tab" + t,
+				onClick: "javascript: showIt('" + t + "')",
+			});
+		e.update('DQ ' + t);
+		p.insert(e);
+	});
+
+	loadTags('HTML', DQ, 'DQ');
+	loadTags('Elem', DQ, 'DQ');
+	loadTags('JSON', DQ, 'DQ');
+	loadTags('Code', dq, 'dq');
+
+	showIt('Code');
+}
+</script>
+
+</head><body onLoad="javascript:loaded()">
+<h1>Dq JS Rules test page</h1>
+<table><tr id="dqTabs">
+</tr></table>
+
+<table id="theHTML"><tr valign=top><td id="tagHTML"></td>
+<td id="dqHTML"></td></tr></table>
+
+<table id="theElem"><tr valign=top><td id="tagElem"></td>
+<td id="dqElem"></td></tr></table>
+
+<table id="theJSON"><tr valign=top><td id="tagJSON"></td>
+<td id="dqJSON"></td></tr></table>
+
+<table id="theCode"><tr valign=top><td id="tagCode"></td>
+<td id="dqCode"></td></tr></table>
+</body></html>
