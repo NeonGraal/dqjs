@@ -1,0 +1,20 @@
+<html><head>
+	<title>DQ JS Char test page</title>
+  <link rel="Stylesheet" type="text/css" href="DqJsChar.css" />
+  <script language="Javascript" src="prototype.js"></script>
+  <script language="Javascript" src="proto-html.js"></script>
+
+  <script language="Javascript" src="DqJsFuncs.js"></script>
+  <script language="Javascript" src="DqJsClasses.js"></script>
+  <script language="Javascript" src="DqJsCharSheet.js"></script>
+  
+  <script language="Javascript" src="DqJsFull.js"></script>
+
+  <script language="Javascript">
+  	function myLoad() {
+  		new $DQ.CharSheet().render(null, $('charDetail'));
+  	}
+  </script>
+</head><body onLoad="myLoad()">
+	<div id="charDetail" ></div>
+</body></html>

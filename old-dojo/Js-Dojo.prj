@@ -1,0 +1,26 @@
+[Project ID]
+Signature=UE Proj: v.1
+[Project Information]
+Use Relative Directory=1
+Relative to Project File=1
+Include Sub Directories=1
+Project Tagfile=
+Project Wordfile=
+Filter=
+Create Tagfile=0
+[Files]
+0=.\dq\
+1=DqCharSht.html
+2=DqCmbt.html
+3=DqJsChar.css
+4=DqJsChar.html
+5=DqJsTest.css
+6=DqJsTest.html
+7=Gerald.dq
+8=Victoria.dq
+9=.\dojo\
+10=.\dojox\
+[Group Filter]
+.\dq\=*.js
+.\dojo\=*.js
+.\dojox\=*.js

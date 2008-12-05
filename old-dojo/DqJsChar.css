@@ -1,0 +1,25 @@
+DL, UL { margin: 0; }
+CAPTION { font-size: large; font-weight: bold; }
+
+.b TD, .b TH { padding: 1px 3px 1px 3px; margin: 0; border: thin black solid; }
+
+TR { vertical-align: top; }
+
+TABLE { border-collapse: collapse; width: 100%; }
+
+.val { text-align: right; width: 10%; }
+.label, .head { font-weight: bold; }
+
+.label { width: 100px; }
+.stat { width: 125px; }
+
+.charHead { font-size: 120%; }
+
+.charStats { width: 40%; }
+.charStats TABLE { font-size: 80%; }
+
+.langSkills { width: 25%; }
+
+.dmg { width: 5%; }
+.rk, .cls, .use { text-align: center; width: 5%; }
+.iv, .bc, .range, .ps, .md { text-align: right; width: 5%; }
