@@ -1,0 +1,37 @@
+<HTML>
+	<HEAD>
+		<TITLE>DQ Character</TITLE>
+	</HEAD>
+	<BODY>
+		<H1>DQ Character</H1>
+		<BUTTON id="btnGet">Get</BUTTON><SPAN id="showGet" ></SPAN>
+		<BR>
+		<BUTTON id="btnPut">Put</BUTTON><SPAN id="showPut" ></SPAN>
+	</BODY>
+	<SCRIPT type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+	</SCRIPT>
+	<SCRIPT type="text/javascript">
+		$(function() {
+			var	$showGet = $('#showGet')
+				,	$showPut = $('#showPut');
+
+			function onComplete($l) {
+				return function(x,s) {
+					if (x.status == 200) {
+						$l.text(x.textResponse);
+					} else {
+						$l.text('ERROR: ' + s);
+					}
+				};
+			}
+
+			$('#btnGet').click(function(){
+				$.ajax({url:'char.dq', complete: onComplete($showGet) });
+			});
+			$('#btnPut').click(function(){
+				$.ajax({url:'char.dq', type: 'PUT', processData: false,
+					complete: onComplete($showPut), data: { name: 'Struan' } });
+			});
+		});
+	</SCRIPT>
+</HTML>
