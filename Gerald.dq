@@ -1,0 +1,15 @@
+{	"name":"Gerald"
+,	"race":"Human"
+,	"college":"Illusion"
+,	"Stats":
+	{	"PS":18
+	,	"MD":18
+	,	"AG":19
+	,	"WP":22
+	,	"MA":11
+	,	"EN":24
+	,	"FT":23
+	,	"PC":25
+	,	"PB":14
+	}
+}

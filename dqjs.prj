@@ -14,5 +14,6 @@ Create Tagfile=0
 2=char.dq
 3=Gerald.dq
 4=.\
+5=dqChar.html
 [Group Filter]
 .\=*.js
