@@ -1,54 +1,15 @@
 <HTML>
 	<HEAD>
 		<TITLE>DQ Character</TITLE>
+		<LINK rel="stylesheet" type="text/css" href="dqChar.css" />
 	</HEAD>
 	<BODY>
+		<SELECT id="dqCharacters" class="r"></SELECT>
 		<H1>DQ Character</H1>
-		<BUTTON id="btnList">List</BUTTON><SPAN id="showList" ></SPAN>
-		<BR>
-		<BUTTON id="btnGet">Get</BUTTON><SPAN id="showGet" ></SPAN>
-		<BR>
-		<BUTTON id="btnPut">Put</BUTTON><SPAN id="showPut" ></SPAN>
-		<BR>
-		<BUTTON id="btnDel">Del</BUTTON><SPAN id="showDel" ></SPAN>
+		<hr>
+		<SPAN id="output"></SPAN>
 	</BODY>
-	<SCRIPT type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
-	</SCRIPT>
-	<SCRIPT type="text/javascript" src="http://jquery-json.googlecode.com/files/jquery.json-2.2.min.js">
-	</SCRIPT>
-	<SCRIPT type="text/javascript">
-		$(function() {
-			var	$showGet = $('#showGet')
-				,	$showList = $('#showList')
-				,	$showPut = $('#showPut')
-				,	$showDel = $('#showDel');
-
-			function onComplete($l) {
-				$showGet.empty();
-				$showPut.empty();
-				$showDel.empty();
-				return function(x,s) {
-					if (x.status == 200) {
-						$l.text('OK: (' + s + ') ' + x.statusText + ' - ' + x.responseText);
-					} else {
-						$l.text('ERROR: (' + s + ') ' + x.statusText);
-					}
-				};
-			}
-
-			$('#btnList').click(function(){
-				$.ajax({url:'*.dq', complete:onComplete($showList) });
-			});
-			$('#btnGet').click(function(){
-				$.ajax({url:'char.dq', complete:onComplete($showGet) });
-			});
-			$('#btnPut').click(function(){
-				$.ajax({url:'char.dq', type:'PUT', processData:false,
-					complete:onComplete($showPut), data:$.toJSON({ name: 'Struan' }) });
-			});
-			$('#btnDel').click(function(){
-				$.ajax({url:'char.dq', type:'DELETE', complete:onComplete($showDel), });
-			});
-		});
-	</SCRIPT>
+	<SCRIPT type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="http://jquery-json.googlecode.com/files/jquery.json-2.2.min.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="dqChar.js" ></SCRIPT>
 </HTML>

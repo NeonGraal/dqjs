@@ -1,0 +1,10 @@
+.r { float:right; }
+.l { float:left; }
+
+.cB { clear:both; }
+.cL { clear:left; }
+.cR { clear:right; }
+
+@media print {
+	select { display:none; }
+}
