@@ -1,18 +1,28 @@
 var $dqChars, $output, $dqChar;
+var Char;
+
 $(function() {
-	function showChar(dq) {
-		var sH, sV;
+	function showChar(char) {
+		var sV;
+		function statCurr(stat) {
+			return DQ.applyMods(char.Stats[stat]);
+		}
+		function statCheck(stat, mul) {
+			return statCurr(stat) * mul;
+		}
 		function showStat(stat) {
-			sH[sH.length] = '<TH>'+stat+'</TH>';
-			sV[sV.length] = '<TD class="stat" id="my'+stat+'">'+dq.Stats[stat]+'</TD>';
+			sV[sV.length] =
+				'<TR><TD class="stat">'+stat+'</TD><TD id="my'+stat+'">'+char.Stats[stat]+'</TD>' +
+				'<TD id="curr'+stat+'">'+statCurr(stat)+'</TD>' + '<TD>'+statCheck(stat,1)+'</TD>' +
+				'<TD>'+statCheck(stat,2)+'</TD>' + '<TD>'+statCheck(stat,3)+'</TD>' +
+				'<TD>'+statCheck(stat,4)+'</TD>' + '<TD>'+statCheck(stat,5)+'</TD></TR>';
 		}
 		return function(sT,tS,xhr) {
-			sH = []; sV = [];
+			sV = [];
 			showStat('PS');showStat('MD');showStat('AG');
 			showStat('WP');showStat('MA');showStat('EN');
 			showStat('FT');showStat('PC');showStat('PB');
-			$('#statHead').append(sH.join(''));
-			$('#statVal').append(sV.join(''));
+			$('#tblStats').append(sV.join(''));
 		};
 	}
 
@@ -21,15 +31,15 @@ $(function() {
 	$output = $('#output');
 
 	$dqChars.bind('change', function(e) {
-		$.getJSON($(this).val()+'.dq', function(d,s) {
-			$dqChar.load('dqChar.html #dqChar-All', showChar(d));
-			$output.text($.toJSON(d));
+		$.getJSON($(this).val()+'.dq', function(char,s) {
+			$dqChar.load('dqChar.html #dqChar-All', showChar(char));
+			$output.text($.toJSON(char));
 		});
 	});
-	$.getJSON('*.dq', function(d,s) {
+	$.getJSON('*.dq', function(char,s) {
 		var a = [];
-		for (var k in d) {
-			a[a.length] = '<OPTION>' + d[k].replace('.dq', '') + '</OPTION>';
+		for (var k in char) {
+			a[a.length] = '<OPTION>' + char[k].replace('.dq', '') + '</OPTION>';
 		}
 		$dqChars.append(a.join('')).change();
 	});

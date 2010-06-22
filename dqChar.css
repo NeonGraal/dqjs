@@ -8,3 +8,8 @@
 @media print {
 	select { display:none; }
 }
+
+#dqChar-All { width:100%; }
+
+#stats TD { text-align:right; width:3en; }
+#stats TD.stat { text-align:left; font-weight:bold; }
