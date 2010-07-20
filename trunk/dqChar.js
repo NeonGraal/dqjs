@@ -3,12 +3,11 @@ var Char;
 
 $(function() {
 	function showChar(char) {
-		var sV;
 		return function(sT,tS,xhr) {
-			sV = [];
-			for (var stat in DQ.Stats)
-				sV[sV.length] = DQ.showStat(char,DQ.Stats[stat]);
-			$('#tblStats').append(sV.join(''));
+			DQ.load($('#tblStats'), 'dq/Stats.html', function() {
+					for (var stat in DQ.Stats)
+						DQ.showStat(char,DQ.Stats[stat]);
+				});
 		};
 	}
 
@@ -16,13 +15,11 @@ $(function() {
 	$dqChar = $('#dqChar');
 	$output = $('#output');
 
-	$.getScript('dq/Stats.js',function(d,s){
-			console.log('dq/Stats.js loaded: '+s);
-		});
+//	DQ.script('Stats');
 
 	$dqChars.bind('change', function(e) {
 		$.getJSON($(this).val()+'.dq', function(char,s) {
-			$dqChar.load('dqChar.html #dqChar-All', showChar(char));
+			DQ.load($dqChar, 'dqChar.html #dqChar-All', showChar(char));
 			$output.text($.toJSON(char));
 		});
 	});

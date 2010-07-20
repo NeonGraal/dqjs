@@ -7,17 +7,23 @@ $.extend(DQ, {
 			return DQ.statCurr(char,stat) * mul;
 		},
 	showStat: function showStat(char,stat) {
-			var r = '<TR><TD class="stat">'+stat;
-			r += '</TD><TD id="my'+stat;
-			r += '">'+char.Stats[stat];
-			r += '</TD><TD id="curr'+stat;
-			r += '">'+DQ.statCurr(char,stat);
-			r += '</TD><TD>'+DQ.statCheck(char,stat,1);
-			r += '</TD><TD>'+DQ.statCheck(char,stat,2);
-			r += '</TD><TD>'+DQ.statCheck(char,stat,3);
-			r += '</TD><TD>'+DQ.statCheck(char,stat,4);
-			r += '</TD><TD>'+DQ.statCheck(char,stat,5);
-			r += '</TD></TR>';
-			return r;
+			if (char && char.Stats)
+				$('#my'+stat)
+					.text(char.Stats[stat])
+					.next().text(DQ.statCurr(char,stat))
+					.next().text(DQ.statCheck(char,stat,1))
+					.next().text(DQ.statCheck(char,stat,2))
+					.next().text(DQ.statCheck(char,stat,3))
+					.next().text(DQ.statCheck(char,stat,4))
+					.next().text(DQ.statCheck(char,stat,5));
+			else
+				$('#my'+stat)
+					.text('')
+					.next().text('')
+					.next().text('')
+					.next().text('')
+					.next().text('')
+					.next().text('')
+					.next().text('');
 		}
 });
